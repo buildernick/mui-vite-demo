@@ -1,0 +1,49 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/blocks';
+import Button from '@mui/material/Button';
+import * as ButtonStories from './MuiButton.stories';
+
+<Meta title="MUI/Button/Documentation" component={Button} />
+
+# Button
+
+Material UI Button components provide a clickable element that triggers an action or event when activated.
+
+## Overview
+
+Buttons allow users to take actions with a single tap. They communicate calls to action and help users interact with your UI. Material UI provides different button variants to match your design needs.
+
+## Variants
+
+<Canvas>
+  <Story of={ButtonStories.Contained} />
+  <Story of={ButtonStories.Outlined} />
+  <Story of={ButtonStories.Text} />
+</Canvas>
+
+## Sizes
+
+Buttons come in different sizes to fit different UI contexts:
+
+<Canvas>
+  <Story of={ButtonStories.ButtonSizes} />
+</Canvas>
+
+## Colors
+
+Buttons can use different colors to indicate different actions or purposes:
+
+<Canvas>
+  <Story of={ButtonStories.ButtonColors} />
+</Canvas>
+
+## Props
+
+<ArgsTable of={Button} />
+
+## Usage Guidelines
+
+- Use primary buttons for the main action on a page
+- Use secondary buttons for alternative actions
+- Limit the number of primary buttons on a single page
+- Make button labels short and descriptive
+- Use consistent button styling throughout your application

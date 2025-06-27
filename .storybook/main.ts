@@ -7,17 +7,20 @@ const config: StorybookConfig = {
   ],
   "addons": [
     "@storybook/addon-links",
-    "@storybook/addon-essentials",
+    "@storybook/addon-essentials", // This includes docs
+    "@storybook/addon-onboarding",
     "@storybook/addon-interactions",
     "@storybook/addon-themes",
-    "@storybook/addon-a11y"
+    "@storybook/addon-a11y",
+    "@storybook/addon-docs" // Explicitly add the docs addon
   ],
   "framework": {
     "name": "@storybook/react-vite",
     "options": {}
   },
   "docs": {
-    "autodocs": "tag"
+    "autodocs": "tag",
+    "defaultName": "Documentation"
   },
   "core": {
     "disableTelemetry": true
