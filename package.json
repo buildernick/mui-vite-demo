@@ -12,6 +12,8 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@builder.io/react": "^8.2.5",
+    "@builder.io/sdk": "^6.1.1",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@fontsource/material-icons": "^5.2.5",

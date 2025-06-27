@@ -34,5 +34,6 @@
     "tail *",
     "touch *",
     "mkdir *"
-  ]
+  ],
+  "command": "npm run dev"
 }
