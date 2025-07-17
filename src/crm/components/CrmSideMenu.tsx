@@ -7,27 +7,50 @@ import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
+import MenuIcon from "@mui/icons-material/Menu";
+import MenuOpenIcon from "@mui/icons-material/MenuOpen";
 import CrmSelectCompany from "./CrmSelectCompany";
 import CrmMenuContent from "./CrmMenuContent";
 import CrmOptionsMenu from "./CrmOptionsMenu";
 
 const drawerWidth = 240;
+const collapsedDrawerWidth = 60;
 
-const Drawer = styled(MuiDrawer)({
-  width: drawerWidth,
+const Drawer = styled(MuiDrawer, {
+  shouldForwardProp: (prop) => prop !== "open",
+})<{ open?: boolean }>(({ theme, open }) => ({
+  width: open ? drawerWidth : collapsedDrawerWidth,
   flexShrink: 0,
   boxSizing: "border-box",
-  mt: 10,
+  whiteSpace: "nowrap",
+  transition: theme.transitions.create("width", {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
   [`& .${drawerClasses.paper}`]: {
-    width: drawerWidth,
+    width: open ? drawerWidth : collapsedDrawerWidth,
     boxSizing: "border-box",
+    transition: theme.transitions.create("width", {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    overflowX: "hidden",
   },
-});
+}));
 
 export default function CrmSideMenu() {
+  const [open, setOpen] = React.useState(true);
+
+  const handleToggle = () => {
+    setOpen(!open);
+  };
+
   return (
     <Drawer
       variant="permanent"
+      open={open}
       sx={{
         display: { xs: "none", md: "block" },
         [`& .${drawerClasses.paper}`]: {
