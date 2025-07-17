@@ -9,6 +9,7 @@ import {
   FilterList as FilterIcon,
   Edit as EditIcon,
 } from "@mui/icons-material";
+import CustomerVersionCard from "../components/CustomerVersionCard";
 
 const customerVersions = [
   {
