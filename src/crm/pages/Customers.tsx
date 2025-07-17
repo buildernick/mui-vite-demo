@@ -66,8 +66,6 @@ const customerVersions = [
 ];
 
 export default function Customers() {
-  const navigate = useNavigate();
-
   return (
     <Box sx={{ width: "100%", maxWidth: 1200, p: 3 }}>
       <Typography variant="h4" component="h1" gutterBottom>
