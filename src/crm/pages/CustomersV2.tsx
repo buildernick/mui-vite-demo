@@ -407,14 +407,38 @@ export default function CustomersV2() {
                   textAlign: "left",
                   px: 2,
                   py: 1,
+                  minHeight: 40,
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
                 }}
                 fullWidth
               >
-                <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                  <ViewListIcon fontSize="small" />
-                  <Typography variant="body2">{view.name}</Typography>
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 1,
+                    minWidth: 0,
+                    flex: 1,
+                  }}
+                >
+                  <ViewListIcon fontSize="small" sx={{ flexShrink: 0 }} />
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    {view.name}
+                  </Typography>
                 </Box>
-                <Badge badgeContent={view.count} color="primary" />
+                <Badge
+                  badgeContent={view.count}
+                  color="primary"
+                  sx={{ flexShrink: 0 }}
+                />
               </Button>
             ))}
           </Stack>
