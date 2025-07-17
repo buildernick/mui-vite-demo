@@ -35,8 +35,6 @@ const secondaryListItems = [
   { text: "Help & Support", icon: <HelpOutlineRoundedIcon />, path: "/help" },
 ];
 
-import Tooltip from "@mui/material/Tooltip";
-
 interface CrmMenuContentProps {
   collapsed?: boolean;
 }
