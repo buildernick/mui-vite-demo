@@ -275,103 +275,123 @@ export default function CustomersV1() {
 
       {/* Customers Grid */}
       {!loading && (
-        <Grid container spacing={3}>
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
+            gap: 2,
+            mt: 1,
+          }}
+        >
           {customers.map((customer) => (
-            <Grid item xs={12} sm={6} md={4} lg={3} key={customer.login.uuid}>
-              <Card
-                sx={{
-                  height: "100%",
-                  display: "flex",
-                  flexDirection: "column",
-                  transition: "transform 0.2s, box-shadow 0.2s",
-                  "&:hover": {
-                    transform: "translateY(-4px)",
-                    boxShadow: 4,
-                  },
-                }}
-              >
-                <CardContent sx={{ flexGrow: 1, p: 2 }}>
-                  {/* Avatar and Name */}
-                  <Stack
-                    direction="column"
-                    alignItems="center"
-                    spacing={1}
-                    sx={{ mb: 2 }}
+            <Card
+              key={customer.login.uuid}
+              sx={{
+                height: "auto",
+                display: "flex",
+                flexDirection: "column",
+                transition: "transform 0.2s, box-shadow 0.2s",
+                "&:hover": {
+                  transform: "translateY(-2px)",
+                  boxShadow: 3,
+                },
+                maxWidth: 280,
+              }}
+            >
+              <CardContent sx={{ p: 1.5 }}>
+                {/* Avatar and Name */}
+                <Stack
+                  direction="column"
+                  alignItems="center"
+                  spacing={0.5}
+                  sx={{ mb: 1.5 }}
+                >
+                  <Avatar
+                    src={customer.picture.medium}
+                    alt={getFullName(customer)}
+                    sx={{ width: 48, height: 48 }}
+                  />
+                  <Typography
+                    variant="subtitle2"
+                    component="h2"
+                    textAlign="center"
+                    noWrap
+                    sx={{ fontSize: "0.875rem" }}
                   >
-                    <Avatar
-                      src={customer.picture.large}
-                      alt={getFullName(customer)}
-                      sx={{ width: 80, height: 80 }}
+                    {getFullName(customer)}
+                  </Typography>
+                  <Chip
+                    label={customer.gender}
+                    size="small"
+                    color={customer.gender === "male" ? "primary" : "secondary"}
+                    variant="outlined"
+                    sx={{ height: 20, fontSize: "0.65rem" }}
+                  />
+                </Stack>
+
+                {/* Contact Information */}
+                <Stack spacing={0.75}>
+                  <Stack direction="row" alignItems="center" spacing={0.5}>
+                    <EmailIcon sx={{ fontSize: 14 }} color="action" />
+                    <Typography
+                      variant="caption"
+                      noWrap
+                      sx={{ flexGrow: 1, fontSize: "0.7rem" }}
+                    >
+                      {customer.email}
+                    </Typography>
+                  </Stack>
+
+                  <Stack direction="row" alignItems="center" spacing={0.5}>
+                    <PhoneIcon sx={{ fontSize: 14 }} color="action" />
+                    <Typography
+                      variant="caption"
+                      noWrap
+                      sx={{ fontSize: "0.7rem" }}
+                    >
+                      {customer.phone}
+                    </Typography>
+                  </Stack>
+
+                  <Stack direction="row" alignItems="flex-start" spacing={0.5}>
+                    <LocationIcon
+                      sx={{ fontSize: 14, mt: 0.2 }}
+                      color="action"
                     />
                     <Typography
-                      variant="h6"
-                      component="h2"
-                      textAlign="center"
-                      noWrap
+                      variant="caption"
+                      sx={{ fontSize: "0.7rem", lineHeight: 1.2 }}
                     >
-                      {getFullName(customer)}
-                    </Typography>
-                    <Chip
-                      label={customer.gender}
-                      size="small"
-                      color={
-                        customer.gender === "male" ? "primary" : "secondary"
-                      }
-                      variant="outlined"
-                    />
-                  </Stack>
-
-                  {/* Contact Information */}
-                  <Stack spacing={1.5}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
-                      <EmailIcon fontSize="small" color="action" />
-                      <Typography variant="body2" noWrap sx={{ flexGrow: 1 }}>
-                        {customer.email}
-                      </Typography>
-                    </Stack>
-
-                    <Stack direction="row" alignItems="center" spacing={1}>
-                      <PhoneIcon fontSize="small" color="action" />
-                      <Typography variant="body2" noWrap>
-                        {customer.phone}
-                      </Typography>
-                    </Stack>
-
-                    <Stack direction="row" alignItems="flex-start" spacing={1}>
-                      <LocationIcon
-                        fontSize="small"
-                        color="action"
-                        sx={{ mt: 0.5 }}
-                      />
-                      <Typography variant="body2" sx={{ fontSize: "0.875rem" }}>
-                        {getFullAddress(customer)}
-                      </Typography>
-                    </Stack>
-
-                    <Typography variant="caption" color="text.secondary">
-                      Age: {customer.dob.age} • Username:{" "}
-                      {customer.login.username}
+                      {customer.location.city}, {customer.location.country}
                     </Typography>
                   </Stack>
 
-                  {/* Action Buttons */}
-                  <Stack
-                    direction="row"
-                    justifyContent="space-between"
-                    sx={{ mt: 2 }}
+                  <Typography
+                    variant="caption"
+                    color="text.secondary"
+                    sx={{ fontSize: "0.65rem" }}
                   >
-                    <IconButton size="small" color="primary">
-                      <EditIcon />
-                    </IconButton>
-                    <IconButton size="small" color="error">
-                      <DeleteIcon />
-                    </IconButton>
-                  </Stack>
-                </CardContent>
-              </Card>
-            </Grid>
+                    Age: {customer.dob.age} • @{customer.login.username}
+                  </Typography>
+                </Stack>
+
+                {/* Action Buttons */}
+                <Stack
+                  direction="row"
+                  justifyContent="space-between"
+                  sx={{ mt: 1 }}
+                >
+                  <IconButton size="small" color="primary" sx={{ p: 0.5 }}>
+                    <EditIcon sx={{ fontSize: 16 }} />
+                  </IconButton>
+                  <IconButton size="small" color="error" sx={{ p: 0.5 }}>
+                    <DeleteIcon sx={{ fontSize: 16 }} />
+                  </IconButton>
+                </Stack>
+              </CardContent>
+            </Card>
           ))}
-        </Grid>
+        </Box>
       )}
 
       {/* Empty State */}
