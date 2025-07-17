@@ -58,14 +58,25 @@ export default function CrmSideMenu() {
         },
       }}
     >
+      {/* Toggle Button */}
       <Box
         sx={{
           display: "flex",
+          alignItems: "center",
+          justifyContent: open ? "space-between" : "center",
           mt: "calc(var(--template-frame-height, 0px) + 4px)",
           p: 1.5,
         }}
       >
-        <CrmSelectCompany />
+        {open && <CrmSelectCompany />}
+        <Tooltip
+          title={open ? "Collapse sidebar" : "Expand sidebar"}
+          placement="right"
+        >
+          <IconButton onClick={handleToggle} size="small">
+            {open ? <MenuOpenIcon /> : <MenuIcon />}
+          </IconButton>
+        </Tooltip>
       </Box>
       <Divider />
       <Box
@@ -76,16 +87,17 @@ export default function CrmSideMenu() {
           flexDirection: "column",
         }}
       >
-        <CrmMenuContent />
+        <CrmMenuContent collapsed={!open} />
       </Box>
       <Stack
         direction="row"
         sx={{
-          p: 2,
-          gap: 1,
+          p: open ? 2 : 1,
+          gap: open ? 1 : 0,
           alignItems: "center",
           borderTop: "1px solid",
           borderColor: "divider",
+          justifyContent: open ? "flex-start" : "center",
         }}
       >
         <Avatar
@@ -96,18 +108,22 @@ export default function CrmSideMenu() {
         >
           AT
         </Avatar>
-        <Box sx={{ mr: "auto" }}>
-          <Typography
-            variant="body2"
-            sx={{ fontWeight: 500, lineHeight: "16px" }}
-          >
-            Alex Thompson
-          </Typography>
-          <Typography variant="caption" sx={{ color: "text.secondary" }}>
-            alex@acmecrm.com
-          </Typography>
-        </Box>
-        <CrmOptionsMenu />
+        {open && (
+          <>
+            <Box sx={{ mr: "auto" }}>
+              <Typography
+                variant="body2"
+                sx={{ fontWeight: 500, lineHeight: "16px" }}
+              >
+                Alex Thompson
+              </Typography>
+              <Typography variant="caption" sx={{ color: "text.secondary" }}>
+                alex@acmecrm.com
+              </Typography>
+            </Box>
+            <CrmOptionsMenu />
+          </>
+        )}
       </Stack>
     </Drawer>
   );
