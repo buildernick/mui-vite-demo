@@ -34,7 +34,15 @@ const secondaryListItems = [
   { text: "Help & Support", icon: <HelpOutlineRoundedIcon />, path: "/help" },
 ];
 
-export default function CrmMenuContent() {
+import Tooltip from "@mui/material/Tooltip";
+
+interface CrmMenuContentProps {
+  collapsed?: boolean;
+}
+
+export default function CrmMenuContent({
+  collapsed = false,
+}: CrmMenuContentProps) {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -42,35 +50,75 @@ export default function CrmMenuContent() {
     navigate(path);
   };
 
+  const renderMenuItem = (item: any, index: number) => {
+    const isSelected = location.pathname === item.path;
+
+    if (collapsed) {
+      return (
+        <ListItem key={index} disablePadding sx={{ display: "block" }}>
+          <Tooltip title={item.text} placement="right">
+            <ListItemButton
+              selected={isSelected}
+              onClick={() => handleNavigation(item.path)}
+              sx={{
+                minHeight: 48,
+                justifyContent: "center",
+                px: 2.5,
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: 0,
+                  justifyContent: "center",
+                }}
+              >
+                {item.icon}
+              </ListItemIcon>
+            </ListItemButton>
+          </Tooltip>
+        </ListItem>
+      );
+    }
+
+    return (
+      <ListItem key={index} disablePadding sx={{ display: "block" }}>
+        <ListItemButton
+          selected={isSelected}
+          onClick={() => handleNavigation(item.path)}
+          sx={{
+            minHeight: 48,
+            justifyContent: collapsed ? "center" : "initial",
+            px: 2.5,
+          }}
+        >
+          <ListItemIcon
+            sx={{
+              minWidth: 0,
+              mr: collapsed ? 0 : 3,
+              justifyContent: "center",
+            }}
+          >
+            {item.icon}
+          </ListItemIcon>
+          <ListItemText
+            primary={item.text}
+            sx={{ opacity: collapsed ? 0 : 1 }}
+          />
+        </ListItemButton>
+      </ListItem>
+    );
+  };
+
   return (
     <Stack sx={{ flexGrow: 1, p: 1, justifyContent: "space-between" }}>
       <List dense>
-        {mainListItems.map((item, index) => (
-          <ListItem key={index} disablePadding sx={{ display: "block" }}>
-            <ListItemButton
-              selected={location.pathname === item.path}
-              onClick={() => handleNavigation(item.path)}
-            >
-              <ListItemIcon>{item.icon}</ListItemIcon>
-              <ListItemText primary={item.text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        {mainListItems.map((item, index) => renderMenuItem(item, index))}
       </List>
       <Box>
         <Divider sx={{ my: 1 }} />
         <List dense>
-          {secondaryListItems.map((item, index) => (
-            <ListItem key={index} disablePadding sx={{ display: "block" }}>
-              <ListItemButton
-                selected={location.pathname === item.path}
-                onClick={() => handleNavigation(item.path)}
-              >
-                <ListItemIcon>{item.icon}</ListItemIcon>
-                <ListItemText primary={item.text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
+          {secondaryListItems.map((item, index) => renderMenuItem(item, index))}
         </List>
       </Box>
     </Stack>
