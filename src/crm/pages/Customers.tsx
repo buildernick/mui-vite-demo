@@ -1,17 +1,5 @@
 import * as React from "react";
-import { useNavigate } from "react-router-dom";
-import {
-  Typography,
-  Box,
-  Card,
-  CardContent,
-  CardActions,
-  Button,
-  Grid,
-  Stack,
-  Chip,
-  Divider,
-} from "@mui/material";
+import { Typography, Box, Grid, Stack } from "@mui/material";
 import {
   GridView as GridIcon,
   TableView as TableIcon,
