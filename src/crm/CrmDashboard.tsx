@@ -67,6 +67,9 @@ export default function CrmDashboard() {
             <Routes>
               <Route index element={<CrmMainDashboard />} />
               <Route path="customers" element={<Customers />} />
+              <Route path="customers-v1" element={<CustomersV1 />} />
+              <Route path="customers-v2" element={<CustomersV2 />} />
+              <Route path="customers-v3" element={<CustomersV3 />} />
               <Route path="deals" element={<Deals />} />
               <Route path="contacts" element={<Contacts />} />
               <Route path="tasks" element={<Tasks />} />
