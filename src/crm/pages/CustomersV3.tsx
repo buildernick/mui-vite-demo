@@ -282,7 +282,7 @@ export default function CustomersV3() {
 
       {/* Customer Profile Section */}
       {selectedCustomer && (
-        <Card sx={{ mb: 4, p: 3 }}>
+        <Card sx={{ mb: 4, p: 3, border: "9px solid hsl(220, 20%, 35%)" }}>
           <CardContent>
             <Stack direction="row" alignItems="flex-start" spacing={3}>
               <Avatar
