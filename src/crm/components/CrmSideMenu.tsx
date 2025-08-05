@@ -7,27 +7,44 @@ import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import CrmSelectCompany from "./CrmSelectCompany";
 import CrmMenuContent from "./CrmMenuContent";
 import CrmOptionsMenu from "./CrmOptionsMenu";
 
 const drawerWidth = 240;
+const collapsedWidth = 64;
 
-const Drawer = styled(MuiDrawer)({
-  width: drawerWidth,
+const Drawer = styled(MuiDrawer, {
+  shouldForwardProp: (prop) => prop !== 'collapsed',
+})<{ collapsed?: boolean }>(({ collapsed }) => ({
+  width: collapsed ? collapsedWidth : drawerWidth,
   flexShrink: 0,
   boxSizing: "border-box",
   mt: 10,
+  transition: "width 0.3s ease",
   [`& .${drawerClasses.paper}`]: {
-    width: drawerWidth,
+    width: collapsed ? collapsedWidth : drawerWidth,
     boxSizing: "border-box",
+    transition: "width 0.3s ease",
+    overflowX: "hidden",
   },
-});
+}));
 
 export default function CrmSideMenu() {
+  const [collapsed, setCollapsed] = React.useState(false);
+
+  const handleToggleCollapse = () => {
+    setCollapsed(!collapsed);
+  };
+
   return (
     <Drawer
       variant="permanent"
+      collapsed={collapsed}
       sx={{
         display: { xs: "none", md: "block" },
         [`& .${drawerClasses.paper}`]: {
