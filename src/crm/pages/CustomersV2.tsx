@@ -374,54 +374,6 @@ export default function CustomersV2() {
         Customers v2 - HubSpot Style
       </Typography>
 
-      {/* Views Section */}
-      <Paper sx={{ mb: 3 }}>
-        <Box sx={{ p: 2 }}>
-          <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mb: 2 }}>
-            <Typography variant="h6">Views</Typography>
-            <Button
-              size="small"
-              startIcon={<SaveIcon />}
-              onClick={() => setSaveViewDialog(true)}
-            >
-              Save current filters as view
-            </Button>
-          </Stack>
-          
-          <Stack direction="row" spacing={1} sx={{ flexWrap: "wrap", gap: 1 }}>
-            {savedViews.map((view) => (
-              <Chip
-                key={view.id}
-                label={view.name}
-                variant={currentView === view.id ? "filled" : "outlined"}
-                color={currentView === view.id ? "primary" : "default"}
-                onClick={() => handleLoadView(view)}
-                onDelete={view.isDefault ? undefined : () => {
-                  setSavedViews(savedViews.filter(v => v.id !== view.id));
-                }}
-                icon={view.isStarred ? (
-                  <StarIcon 
-                    sx={{ fontSize: 16 }} 
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleStarView(view.id);
-                    }}
-                  />
-                ) : (
-                  <StarBorderIcon 
-                    sx={{ fontSize: 16 }} 
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleStarView(view.id);
-                    }}
-                  />
-                )}
-              />
-            ))}
-          </Stack>
-        </Box>
-      </Paper>
-
       {/* Search and Filters */}
       <Paper sx={{ mb: 3 }}>
         <Box sx={{ p: 2 }}>
@@ -506,6 +458,54 @@ export default function CustomersV2() {
         </Box>
       </Paper>
 
+      {/* Views Section */}
+      <Paper sx={{ mb: 3 }}>
+        <Box sx={{ p: 2 }}>
+          <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mb: 2 }}>
+            <Typography variant="h6">Views</Typography>
+            <Button
+              size="small"
+              startIcon={<SaveIcon />}
+              onClick={() => setSaveViewDialog(true)}
+            >
+              Save current filters as view
+            </Button>
+          </Stack>
+
+          <Stack direction="row" spacing={3} sx={{ flexWrap: "wrap", gap: 3 }}>
+            {savedViews.map((view) => (
+              <Chip
+                key={view.id}
+                label={view.name}
+                variant={currentView === view.id ? "filled" : "outlined"}
+                color={currentView === view.id ? "primary" : "default"}
+                onClick={() => handleLoadView(view)}
+                onDelete={view.isDefault ? undefined : () => {
+                  setSavedViews(savedViews.filter(v => v.id !== view.id));
+                }}
+                icon={view.isStarred ? (
+                  <StarIcon
+                    sx={{ fontSize: 16 }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleStarView(view.id);
+                    }}
+                  />
+                ) : (
+                  <StarBorderIcon
+                    sx={{ fontSize: 16 }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleStarView(view.id);
+                    }}
+                  />
+                )}
+              />
+            ))}
+          </Stack>
+        </Box>
+      </Paper>
+
       {/* Actions Bar */}
       {selectedCustomers.length > 0 && (
         <Paper sx={{ mb: 2, p: 2 }}>
@@ -571,9 +571,6 @@ export default function CustomersV2() {
                         <Box>
                           <Typography variant="body2" fontWeight="medium">
                             {customer.name.title} {customer.name.first} {customer.name.last}
-                          </Typography>
-                          <Typography variant="caption" color="text.secondary">
-                            @{customer.login.username}
                           </Typography>
                         </Box>
                       </Stack>
