@@ -36,14 +36,28 @@ const progressFillAnimation = keyframes`
 
 // Styled components
 const AnimatedCard = styled(Card)(({ theme }) => ({
-  background: `linear-gradient(135deg, ${theme.palette.primary.main}15 0%, ${theme.palette.secondary.main}15 100%)`,
-  border: `2px solid ${theme.palette.primary.main}30`,
-  borderRadius: 16,
-  boxShadow: `0 8px 32px ${theme.palette.primary.main}20`,
+  background: `linear-gradient(135deg, #FFD700 15%, #32CD32 85%)`,
+  border: `3px solid #FFD700`,
+  borderRadius: 20,
+  boxShadow: `0 12px 40px rgba(255, 215, 0, 0.4)`,
   transition: "all 0.3s ease-in-out",
+  position: "relative",
+  overflow: "hidden",
+  "&:before": {
+    content: '""',
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    background: `radial-gradient(circle at 20% 50%, #FFFF00 0%, transparent 50%), radial-gradient(circle at 80% 50%, #00FF00 0%, transparent 50%)`,
+    opacity: 0.1,
+    pointerEvents: "none",
+  },
   "&:hover": {
-    transform: "translateY(-4px)",
-    boxShadow: `0 12px 40px ${theme.palette.primary.main}30`,
+    transform: "translateY(-8px) rotateX(2deg)",
+    boxShadow: `0 20px 60px rgba(255, 215, 0, 0.6), 0 8px 32px rgba(50, 205, 50, 0.4)`,
+    filter: "brightness(1.1)",
   },
 }));
 
