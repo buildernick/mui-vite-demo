@@ -153,13 +153,18 @@ const ResultBar = styled(Box)<{ percentage: number; isWinner?: boolean; delay?: 
 const ResultLabel = styled(Box)(({ theme }) => ({
   position: "absolute",
   top: "50%",
-  left: 16,
+  left: 20,
   transform: "translateY(-50%)",
-  zIndex: 1,
-  color: theme.palette.text.primary,
-  fontWeight: 600,
-  fontSize: "0.9rem",
-  animation: `${slideInAnimation} 0.8s ease-out 1s both`,
+  zIndex: 3,
+  color: "#1B5E20",
+  fontWeight: 800,
+  fontSize: "1rem",
+  textShadow: "0 2px 4px rgba(255,255,255,0.8)",
+  animation: `${slideInAnimation} 1s ease-out 1.5s both`,
+  background: "rgba(255,255,255,0.2)",
+  borderRadius: "12px",
+  padding: "4px 8px",
+  backdropFilter: "blur(4px)",
 }));
 
 interface PollOption {
