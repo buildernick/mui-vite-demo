@@ -345,28 +345,52 @@ export default function WildPoll({
               ))}
             </Stack>
             
-            <Box sx={{ mt: 4, textAlign: "center" }}>
+            <Box sx={{ mt: 5, textAlign: "center" }}>
               <Button
                 variant="contained"
                 onClick={handleVote}
                 disabled={!selectedOption}
                 size="large"
                 sx={{
-                  px: 4,
-                  py: 1.5,
-                  fontSize: "1.1rem",
-                  fontWeight: 600,
-                  borderRadius: 3,
+                  px: 6,
+                  py: 2,
+                  fontSize: "1.3rem",
+                  fontWeight: 800,
+                  borderRadius: 5,
                   textTransform: "none",
-                  background: "linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)",
-                  boxShadow: "0 4px 20px rgba(33, 150, 243, 0.3)",
-                  "&:hover": {
-                    transform: "translateY(-2px)",
-                    boxShadow: "0 6px 25px rgba(33, 150, 243, 0.4)",
+                  background: "linear-gradient(135deg, #FFFF00 0%, #FFD700 25%, #32CD32 50%, #00FF00 75%, #ADFF2F 100%)",
+                  border: "3px solid #FFD700",
+                  color: "#1B5E20",
+                  boxShadow: "0 8px 30px rgba(255, 215, 0, 0.6), 0 4px 20px rgba(50, 205, 50, 0.4)",
+                  position: "relative",
+                  overflow: "hidden",
+                  "&:before": {
+                    content: '""',
+                    position: "absolute",
+                    top: 0,
+                    left: "-100%",
+                    width: "100%",
+                    height: "100%",
+                    background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent)",
+                    transition: "left 0.8s",
                   },
+                  "&:hover": {
+                    transform: "translateY(-4px) scale(1.05)",
+                    background: "linear-gradient(135deg, #FFFF33 0%, #FFD700 25%, #00FF7F 50%, #32CD32 75%, #90EE90 100%)",
+                    boxShadow: "0 12px 40px rgba(255, 215, 0, 0.8), 0 6px 30px rgba(50, 205, 50, 0.6)",
+                    animation: `${pulseAnimation} 1s ease-in-out infinite`,
+                    "&:before": {
+                      left: "100%",
+                    },
+                  },
+                  "&:disabled": {
+                    background: "linear-gradient(135deg, #CCCCCC 0%, #999999 100%)",
+                    color: "#666666",
+                    boxShadow: "none",
+                  }
                 }}
               >
-                Cast Your Vote 🗳️
+                🌟 CAST YOUR EPIC VOTE! 🚀
               </Button>
             </Box>
           </Box>
