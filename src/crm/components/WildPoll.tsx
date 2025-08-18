@@ -481,20 +481,40 @@ export default function WildPoll({
               </Stack>
             )}
             
-            <Box sx={{ 
-              mt: 3, 
-              p: 2, 
-              bgcolor: "background.paper", 
-              borderRadius: 2,
-              border: "1px solid",
-              borderColor: "divider"
+            <Box sx={{
+              mt: 4,
+              p: 3,
+              background: "linear-gradient(135deg, #FFFF00 0%, #FFD700 25%, #32CD32 75%, #00FF00 100%)",
+              borderRadius: 4,
+              border: "4px solid #FFD700",
+              boxShadow: "0 8px 30px rgba(255,215,0,0.4), inset 0 2px 10px rgba(255,255,255,0.3)",
+              position: "relative",
+              overflow: "hidden",
+              "&:before": {
+                content: '""',
+                position: "absolute",
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                background: "radial-gradient(circle at 30% 40%, rgba(255,255,255,0.3) 0%, transparent 50%), radial-gradient(circle at 70% 80%, rgba(255,255,255,0.2) 0%, transparent 50%)",
+                pointerEvents: "none",
+              }
             }}>
-              <Stack direction="row" justifyContent="space-between" alignItems="center">
-                <Typography variant="body1" sx={{ fontWeight: 600 }}>
-                  Total Votes: {totalVotes}
+              <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ position: "relative", zIndex: 1 }}>
+                <Typography variant="h6" sx={{
+                  fontWeight: 800,
+                  color: "#1B5E20",
+                  textShadow: "1px 1px 2px rgba(255,255,255,0.8)"
+                }}>
+                  🏆 Total Epic Votes: {totalVotes} 🏆
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Thank you for participating! 🎉
+                <Typography variant="h6" sx={{
+                  color: "#1B5E20",
+                  fontWeight: 700,
+                  textShadow: "1px 1px 2px rgba(255,255,255,0.8)"
+                }}>
+                  THANK YOU FOR THE WILD PARTICIPATION! 🎊🚀✨
                 </Typography>
               </Stack>
             </Box>
