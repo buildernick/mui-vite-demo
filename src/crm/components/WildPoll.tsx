@@ -294,7 +294,14 @@ export default function WildPoll({
           </Box>
         </Box>
 
-        <Divider sx={{ mb: 3, borderWidth: 2, borderColor: "primary.main" }} />
+        <Divider sx={{
+          mb: 4,
+          borderWidth: 3,
+          background: "linear-gradient(90deg, #FFD700 0%, #32CD32 50%, #FFD700 100%)",
+          borderRadius: 2,
+          height: 4,
+          border: "none"
+        }} />
         
         {!hasVoted ? (
           <Box>
