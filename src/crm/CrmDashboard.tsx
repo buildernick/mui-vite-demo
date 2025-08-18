@@ -69,6 +69,7 @@ export default function CrmDashboard() {
               <Route path="contacts" element={<Contacts />} />
               <Route path="tasks" element={<Tasks />} />
               <Route path="reports" element={<Reports />} />
+              <Route path="polls" element={<Polls />} />
               <Route path="settings" element={<Settings />} />
             </Routes>
             <Outlet />
