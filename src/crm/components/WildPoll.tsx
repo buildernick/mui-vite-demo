@@ -216,30 +216,78 @@ export default function WildPoll({
     <AnimatedCard sx={{ maxWidth: 700, mx: "auto", mb: 3 }}>
       <CardContent sx={{ p: 3 }}>
         {/* Header */}
-        <Box sx={{ display: "flex", alignItems: "center", mb: 3 }}>
-          <Badge badgeContent={<PollIcon sx={{ fontSize: 16 }} />} color="primary">
-            <Avatar sx={{ bgcolor: "primary.main", mr: 2 }}>
-              <PollIcon />
+        <Box sx={{
+          display: "flex",
+          alignItems: "center",
+          mb: 4,
+          p: 2,
+          background: "linear-gradient(135deg, rgba(255,255,0,0.2) 0%, rgba(50,205,50,0.2) 100%)",
+          borderRadius: 3,
+          border: "2px solid #FFD700",
+          position: "relative",
+          zIndex: 1,
+        }}>
+          <Badge
+            badgeContent={
+              <Box sx={{
+                bgcolor: "#32CD32",
+                borderRadius: "50%",
+                p: 0.5,
+                border: "2px solid #FFD700"
+              }}>
+                <PollIcon sx={{ fontSize: 14, color: "white" }} />
+              </Box>
+            }
+          >
+            <Avatar sx={{
+              bgcolor: "linear-gradient(135deg, #FFD700 0%, #32CD32 100%)",
+              background: "linear-gradient(135deg, #FFD700 0%, #32CD32 100%)",
+              mr: 2,
+              width: 60,
+              height: 60,
+              border: "3px solid #FFFF00",
+              boxShadow: "0 8px 25px rgba(255,215,0,0.5)"
+            }}>
+              <PollIcon sx={{ fontSize: 30, color: "#1B5E20" }} />
             </Avatar>
           </Badge>
           <Box sx={{ flex: 1 }}>
-            <Typography variant="h4" component="h2" sx={{ fontWeight: 700, mb: 0.5 }}>
+            <Typography variant="h4" component="h2" sx={{
+              fontWeight: 800,
+              mb: 1,
+              background: "linear-gradient(135deg, #1B5E20 0%, #2E7D32 100%)",
+              backgroundClip: "text",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              textShadow: "2px 2px 4px rgba(255,215,0,0.3)"
+            }}>
               {question}
             </Typography>
             <Stack direction="row" spacing={1} alignItems="center">
-              <Chip 
-                icon={<GroupIcon />} 
-                label={`${totalParticipants} participants`} 
-                size="small" 
-                variant="outlined"
+              <Chip
+                icon={<GroupIcon />}
+                label={`${totalParticipants} participants`}
+                size="medium"
+                sx={{
+                  bgcolor: "#32CD32",
+                  color: "white",
+                  fontWeight: 600,
+                  border: "2px solid #FFD700",
+                  "& .MuiChip-icon": { color: "white" }
+                }}
               />
               {timeRemaining && (
-                <Chip 
-                  icon={<TimerIcon />} 
-                  label={timeRemaining} 
-                  size="small" 
-                  color="warning"
-                  variant="outlined"
+                <Chip
+                  icon={<TimerIcon />}
+                  label={timeRemaining}
+                  size="medium"
+                  sx={{
+                    bgcolor: "#FFD700",
+                    color: "#1B5E20",
+                    fontWeight: 600,
+                    border: "2px solid #32CD32",
+                    "& .MuiChip-icon": { color: "#1B5E20" }
+                  }}
                 />
               )}
             </Stack>
