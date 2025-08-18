@@ -18,6 +18,7 @@ import AssessmentRoundedIcon from "@mui/icons-material/AssessmentRounded";
 import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
 import HelpOutlineRoundedIcon from "@mui/icons-material/HelpOutlineRounded";
 import { CrmLogo } from "./CrmAppNavbar";
+import CustomPollIcon from "./CustomPollIcon";
 
 const mainListItems = [
   { text: "Dashboard", icon: <DashboardRoundedIcon />, path: "/" },
