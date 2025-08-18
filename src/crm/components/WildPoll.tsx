@@ -109,13 +109,26 @@ const OptionButton = styled(Button)<{ selected?: boolean }>(({ theme, selected }
 
 const ResultBar = styled(Box)<{ percentage: number; isWinner?: boolean; delay?: number }>(
   ({ theme, percentage, isWinner, delay = 0 }) => ({
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: theme.palette.grey[200],
+    height: 50,
+    borderRadius: 25,
+    backgroundColor: "#E8F5E8",
     position: "relative",
     overflow: "hidden",
-    marginBottom: 8,
-    border: isWinner ? `2px solid ${theme.palette.success.main}` : "none",
+    marginBottom: 12,
+    border: isWinner ? `4px solid #FFD700` : `2px solid #90EE90`,
+    boxShadow: isWinner
+      ? `0 6px 20px rgba(255, 215, 0, 0.4)`
+      : `0 4px 15px rgba(50, 205, 50, 0.3)`,
+    "&::before": {
+      content: '""',
+      position: "absolute",
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      background: `repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.1) 10px, rgba(255,255,255,0.1) 20px)`,
+      zIndex: 2,
+    },
     "&::after": {
       content: '""',
       position: "absolute",
@@ -124,11 +137,15 @@ const ResultBar = styled(Box)<{ percentage: number; isWinner?: boolean; delay?: 
       height: "100%",
       width: `${percentage}%`,
       background: isWinner
-        ? `linear-gradient(90deg, ${theme.palette.success.main}, ${theme.palette.success.light})`
-        : `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+        ? `linear-gradient(90deg, #FFFF00 0%, #FFD700 30%, #FFA500 60%, #FF6347 100%)`
+        : `linear-gradient(90deg, #ADFF2F 0%, #32CD32 30%, #00FF00 60%, #00FA9A 100%)`,
       borderRadius: "inherit",
-      animation: `${progressFillAnimation} 2s ease-out ${delay}s both`,
+      animation: `${progressFillAnimation} 2.5s cubic-bezier(0.4, 0, 0.2, 1) ${delay}s both`,
       "--target-width": `${percentage}%`,
+      zIndex: 1,
+      boxShadow: isWinner
+        ? `inset 0 2px 10px rgba(255, 215, 0, 0.6)`
+        : `inset 0 2px 10px rgba(50, 205, 50, 0.5)`,
     },
   })
 );
