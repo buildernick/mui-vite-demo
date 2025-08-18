@@ -25,7 +25,7 @@ const mainListItems = [
   { text: "Contacts", icon: <ContactsRoundedIcon />, path: "/contacts" },
   { text: "Tasks", icon: <AssignmentRoundedIcon />, path: "/tasks" },
   { text: "Reports", icon: <AssessmentRoundedIcon />, path: "/reports" },
-  { text: "Polls", icon: <PollIcon />, path: "/polls" },
+  { text: "Polls", icon: <CustomPollIcon />, path: "/polls" },
 ];
 
 const secondaryListItems = [
