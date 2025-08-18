@@ -396,10 +396,30 @@ export default function WildPoll({
           </Box>
         ) : (
           <Box>
-            <Box sx={{ display: "flex", alignItems: "center", mb: 3 }}>
-              <TrendingUpIcon sx={{ color: "success.main", mr: 1 }} />
-              <Typography variant="h5" sx={{ fontWeight: 600, color: "success.main" }}>
-                Live Results
+            <Box sx={{
+              display: "flex",
+              alignItems: "center",
+              mb: 4,
+              p: 2,
+              background: "linear-gradient(135deg, rgba(50,205,50,0.3) 0%, rgba(255,255,0,0.3) 100%)",
+              borderRadius: 3,
+              border: "3px solid #32CD32"
+            }}>
+              <TrendingUpIcon sx={{
+                color: "#FFD700",
+                mr: 2,
+                fontSize: 35,
+                filter: "drop-shadow(2px 2px 4px rgba(50,205,50,0.5))"
+              }} />
+              <Typography variant="h4" sx={{
+                fontWeight: 800,
+                background: "linear-gradient(135deg, #FFD700 0%, #32CD32 100%)",
+                backgroundClip: "text",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                textShadow: "2px 2px 4px rgba(255,215,0,0.3)"
+              }}>
+                🎉 EXPLOSIVE LIVE RESULTS! 🎉
               </Typography>
             </Box>
             
