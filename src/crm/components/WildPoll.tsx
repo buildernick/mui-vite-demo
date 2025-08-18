@@ -63,20 +63,47 @@ const AnimatedCard = styled(Card)(({ theme }) => ({
 
 const OptionButton = styled(Button)<{ selected?: boolean }>(({ theme, selected }) => ({
   justifyContent: "flex-start",
-  padding: "16px 20px",
-  marginBottom: 12,
-  borderRadius: 12,
+  padding: "20px 24px",
+  marginBottom: 16,
+  borderRadius: 20,
   textTransform: "none",
-  fontSize: "1rem",
-  fontWeight: 500,
-  border: `2px solid ${selected ? theme.palette.primary.main : theme.palette.divider}`,
-  backgroundColor: selected ? `${theme.palette.primary.main}15` : "transparent",
-  color: selected ? theme.palette.primary.main : theme.palette.text.primary,
-  transition: "all 0.3s ease",
+  fontSize: "1.1rem",
+  fontWeight: 600,
+  border: selected
+    ? `3px solid #FFD700`
+    : `3px solid #32CD32`,
+  background: selected
+    ? `linear-gradient(135deg, #FFFF00 0%, #FFD700 50%, #FFA500 100%)`
+    : `linear-gradient(135deg, #90EE90 0%, #32CD32 50%, #228B22 100%)`,
+  color: selected ? "#2E7D32" : "#1B5E20",
+  boxShadow: selected
+    ? `0 8px 25px rgba(255, 215, 0, 0.5)`
+    : `0 6px 20px rgba(50, 205, 50, 0.4)`,
+  transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+  position: "relative",
+  overflow: "hidden",
+  "&:before": {
+    content: '""',
+    position: "absolute",
+    top: 0,
+    left: "-100%",
+    width: "100%",
+    height: "100%",
+    background: `linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)`,
+    transition: "left 0.6s",
+  },
   "&:hover": {
-    backgroundColor: `${theme.palette.primary.main}10`,
-    borderColor: theme.palette.primary.main,
-    animation: `${pulseAnimation} 0.6s ease-in-out`,
+    transform: "translateY(-4px) scale(1.02)",
+    background: selected
+      ? `linear-gradient(135deg, #FFFF33 0%, #FFD700 50%, #FF8C00 100%)`
+      : `linear-gradient(135deg, #98FB98 0%, #00FF00 50%, #00FF7F 100%)`,
+    boxShadow: selected
+      ? `0 12px 35px rgba(255, 215, 0, 0.7)`
+      : `0 10px 30px rgba(50, 205, 50, 0.6)`,
+    animation: `${pulseAnimation} 0.8s ease-in-out infinite`,
+    "&:before": {
+      left: "100%",
+    },
   },
 }));
 
