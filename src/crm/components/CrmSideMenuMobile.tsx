@@ -15,6 +15,7 @@ import BusinessCenterRoundedIcon from "@mui/icons-material/BusinessCenterRounded
 import ContactsRoundedIcon from "@mui/icons-material/ContactsRounded";
 import AssignmentRoundedIcon from "@mui/icons-material/AssignmentRounded";
 import AssessmentRoundedIcon from "@mui/icons-material/AssessmentRounded";
+import PollIcon from "@mui/icons-material/Poll";
 import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
 import HelpOutlineRoundedIcon from "@mui/icons-material/HelpOutlineRounded";
 import { CrmLogo } from "./CrmAppNavbar";
