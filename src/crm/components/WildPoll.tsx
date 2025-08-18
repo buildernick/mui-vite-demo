@@ -453,9 +453,17 @@ export default function WildPoll({
                         </Box>
                         <Chip
                           label={`${option.votes} votes • ${percentage.toFixed(1)}%`}
-                          size="small"
-                          color={isWinner ? "success" : isSelected ? "primary" : "default"}
-                          variant={isWinner || isSelected ? "filled" : "outlined"}
+                          size="medium"
+                          sx={{
+                            bgcolor: isWinner ? "#FFD700" : isSelected ? "#32CD32" : "#90EE90",
+                            color: isWinner ? "#1B5E20" : isSelected ? "white" : "#1B5E20",
+                            fontWeight: 700,
+                            border: isWinner ? "2px solid #32CD32" : isSelected ? "2px solid #FFD700" : "2px solid #32CD32",
+                            boxShadow: isWinner
+                              ? "0 4px 15px rgba(255,215,0,0.5)"
+                              : "0 3px 10px rgba(50,205,50,0.4)",
+                            fontSize: "0.9rem"
+                          }}
                         />
                       </Box>
                       <ResultBar 
