@@ -17,6 +17,7 @@ import Deals from "./pages/Deals";
 import Contacts from "./pages/Contacts";
 import Tasks from "./pages/Tasks";
 import Reports from "./pages/Reports";
+import Polls from "./pages/Polls";
 import Settings from "./pages/Settings";
 import AppTheme from "../shared-theme/AppTheme";
 import {
