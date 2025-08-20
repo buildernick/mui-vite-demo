@@ -18,16 +18,19 @@ import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
 import HelpOutlineRoundedIcon from "@mui/icons-material/HelpOutlineRounded";
 
 const mainListItems = [
-  { text: "Dashboard", icon: <DashboardRoundedIcon />, path: "/" },
-  { text: "Customers", icon: <PeopleRoundedIcon />, path: "/customers" },
-  { text: "Deals", icon: <BusinessCenterRoundedIcon />, path: "/deals" },
-  { text: "Contacts", icon: <ContactsRoundedIcon />, path: "/contacts" },
-  { text: "Tasks", icon: <AssignmentRoundedIcon />, path: "/tasks" },
-  { text: "Reports", icon: <AssessmentRoundedIcon />, path: "/reports" },
+  { text: "Dashboard", icon: <DashboardRoundedIcon />, path: "/crm" },
+  { text: "Customers", icon: <PeopleRoundedIcon />, path: "/crm/customers" },
+  { text: "Customers v1", icon: <PeopleRoundedIcon />, path: "/crm/customers-v1" },
+  { text: "Customers v2", icon: <PeopleRoundedIcon />, path: "/crm/customers-v2" },
+  { text: "Customers v3", icon: <PeopleRoundedIcon />, path: "/crm/customers-v3" },
+  { text: "Deals", icon: <BusinessCenterRoundedIcon />, path: "/crm/deals" },
+  { text: "Contacts", icon: <ContactsRoundedIcon />, path: "/crm/contacts" },
+  { text: "Tasks", icon: <AssignmentRoundedIcon />, path: "/crm/tasks" },
+  { text: "Reports", icon: <AssessmentRoundedIcon />, path: "/crm/reports" },
 ];
 
 const secondaryListItems = [
-  { text: "Settings", icon: <SettingsRoundedIcon />, path: "/settings" },
+  { text: "Settings", icon: <SettingsRoundedIcon />, path: "/crm/settings" },
   { text: "Help & Support", icon: <HelpOutlineRoundedIcon />, path: "/help" },
 ];
 
