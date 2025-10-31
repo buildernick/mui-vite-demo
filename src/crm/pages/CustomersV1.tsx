@@ -2,10 +2,6 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -18,6 +14,7 @@ import DialogActions from "@mui/material/DialogActions";
 import Stack from "@mui/material/Stack";
 import CircularProgress from "@mui/material/CircularProgress";
 import Alert from "@mui/material/Alert";
+import CustomerCard from "../components/CustomerCard";
 
 interface User {
   login: {
@@ -192,31 +189,7 @@ export default function CustomersV1() {
         <Grid container spacing={3}>
           {customers.map((customer) => (
             <Grid item xs={12} sm={6} md={4} lg={3} key={customer.login.uuid}>
-              <Card sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
-                <CardContent sx={{ flexGrow: 1, textAlign: "center" }}>
-                  <Avatar
-                    src={customer.picture.large}
-                    alt={`${customer.name.first} ${customer.name.last}`}
-                    sx={{ width: 80, height: 80, mx: "auto", mb: 2 }}
-                  />
-                  <Typography variant="h6" component="h2" gutterBottom>
-                    {customer.name.first} {customer.name.last}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary" gutterBottom>
-                    {customer.email}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {customer.location.city}, {customer.location.country}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
-                    {customer.phone}
-                  </Typography>
-                </CardContent>
-                <CardActions sx={{ justifyContent: "center", pb: 2 }}>
-                  <Button size="small">View Details</Button>
-                  <Button size="small">Edit</Button>
-                </CardActions>
-              </Card>
+              <CustomerCard customer={customer} />
             </Grid>
           ))}
         </Grid>
