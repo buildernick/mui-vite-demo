@@ -20,6 +20,9 @@ import HelpOutlineRoundedIcon from "@mui/icons-material/HelpOutlineRounded";
 const mainListItems = [
   { text: "Dashboard", icon: <DashboardRoundedIcon />, path: "/" },
   { text: "Customers", icon: <PeopleRoundedIcon />, path: "/customers" },
+  { text: "Customers v1", icon: <PeopleRoundedIcon />, path: "/customers-v1" },
+  { text: "Customers v2", icon: <PeopleRoundedIcon />, path: "/customers-v2" },
+  { text: "Customers v3", icon: <PeopleRoundedIcon />, path: "/customers-v3" },
   { text: "Deals", icon: <BusinessCenterRoundedIcon />, path: "/deals" },
   { text: "Contacts", icon: <ContactsRoundedIcon />, path: "/contacts" },
   { text: "Tasks", icon: <AssignmentRoundedIcon />, path: "/tasks" },
