@@ -221,6 +221,61 @@ export default function CustomersV2() {
 
   return (
     <Box sx={{ width: "100%", maxWidth: { sm: "100%", md: "1700px" } }}>
+      <Box sx={{ display: "flex", flexWrap: "wrap", gap: "48px", mb: 2, border: "2px solid hsl(45, 94%, 80%)", p: 2 }}>
+        <Box sx={{ display: "flex", alignItems: "center", lineHeight: "20px" }}>
+          Active View:
+        </Box>
+        {savedViews.map((view) => (
+          <Box
+            key={view.id}
+            role="button"
+            tabIndex={0}
+            onClick={() => handleLoadView(view)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                handleLoadView(view);
+              }
+            }}
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              backgroundColor: activeView === view.id ? "rgb(2, 122, 242)" : "rgb(235, 238, 244)",
+              borderColor: activeView === view.id ? "rgb(230, 242, 255)" : "rgb(218, 222, 231)",
+              borderRadius: "999px",
+              borderWidth: "1px",
+              borderStyle: "solid",
+              color: activeView === view.id ? "rgb(230, 242, 255)" : "rgb(86, 100, 129)",
+              fontSize: "13px",
+              height: "24px",
+              justifyContent: "center",
+              lineHeight: "19.5px",
+              maxHeight: "20px",
+              maxWidth: "100%",
+              position: "relative",
+              textWrap: "nowrap",
+              userSelect: "none",
+              cursor: "pointer",
+              transition: "background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+              px: 1,
+              "&:hover": {
+                backgroundColor: activeView === view.id ? "rgb(1, 102, 200)" : "rgb(220, 225, 235)",
+              },
+              "& > div": {
+                display: "block",
+                fontSize: "12px",
+                fontWeight: "600",
+                lineHeight: "18px",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap",
+              },
+            }}
+          >
+            <div>{view.name}</div>
+          </Box>
+        ))}
+      </Box>
+
       <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mb: 3 }}>
         <Typography variant="h4" component="h1" sx={{ fontWeight: 600 }}>
           Customers v2
@@ -296,21 +351,6 @@ export default function CustomersV2() {
           </Stack>
         )}
       </Paper>
-
-      <Stack direction="row" spacing={1} sx={{ mb: 2, flexWrap: "wrap", gap: 1 }}>
-        <Typography variant="body2" sx={{ display: "flex", alignItems: "center", mr: 1 }}>
-          Active View:
-        </Typography>
-        {savedViews.map((view) => (
-          <Chip
-            key={view.id}
-            label={view.name}
-            onClick={() => handleLoadView(view)}
-            color={activeView === view.id ? "primary" : "default"}
-            variant={activeView === view.id ? "filled" : "outlined"}
-          />
-        ))}
-      </Stack>
 
       {loading ? (
         <Box sx={{ display: "flex", justifyContent: "center", p: 4 }}>
