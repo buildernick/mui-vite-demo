@@ -1,7 +1,6 @@
 import * as React from "react";
 import {
   Box,
-  Button,
   TextField,
   Typography,
   Avatar,
@@ -22,6 +21,7 @@ import {
   Tab,
   Checkbox,
 } from "@mui/material";
+import RakutenButton from "../components/RakutenButton";
 import {
   Add as AddIcon,
   FilterList as FilterIcon,
@@ -296,9 +296,9 @@ export default function CustomersV2() {
         <Typography variant="h4" component="h1">
           Customers v2
         </Typography>
-        <Button variant="contained" startIcon={<AddIcon />} onClick={() => setOpenDialog(true)}>
+        <RakutenButton variant="contained" startIcon={<AddIcon />} onClick={() => setOpenDialog(true)}>
           Add Contact
-        </Button>
+        </RakutenButton>
       </Box>
 
       <Paper sx={{ mb: 2 }}>
@@ -325,19 +325,19 @@ export default function CustomersV2() {
           sx={{ flexGrow: 1, minWidth: 250 }}
           size="small"
         />
-        <Button
+        <RakutenButton
           variant="outlined"
           startIcon={<FilterIcon />}
           onClick={(e) => setFilterAnchor(e.currentTarget)}
         >
           Advanced Filters
-        </Button>
-        <Button variant="outlined" startIcon={<SaveIcon />} onClick={() => setOpenSaveView(true)}>
+        </RakutenButton>
+        <RakutenButton variant="outlined" startIcon={<SaveIcon />} onClick={() => setOpenSaveView(true)}>
           Save View
-        </Button>
-        <Button variant="contained" onClick={handleApplyFilters}>
+        </RakutenButton>
+        <RakutenButton variant="contained" onClick={handleApplyFilters}>
           Search
-        </Button>
+        </RakutenButton>
       </Box>
 
       <Menu
@@ -363,9 +363,9 @@ export default function CustomersV2() {
               <MenuItem value="Australia">Australia</MenuItem>
             </Select>
           </FormControl>
-          <Button variant="contained" fullWidth onClick={handleApplyFilters}>
+          <RakutenButton variant="contained" fullWidth onClick={handleApplyFilters}>
             Apply Filters
-          </Button>
+          </RakutenButton>
         </Box>
       </Menu>
 
@@ -452,10 +452,10 @@ export default function CustomersV2() {
           </Box>
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => setOpenDialog(false)}>Cancel</Button>
-          <Button onClick={handleCreateCustomer} variant="contained">
+          <RakutenButton onClick={() => setOpenDialog(false)}>Cancel</RakutenButton>
+          <RakutenButton onClick={handleCreateCustomer} variant="contained">
             Create Customer
-          </Button>
+          </RakutenButton>
         </DialogActions>
       </Dialog>
 
@@ -472,10 +472,10 @@ export default function CustomersV2() {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => setOpenSaveView(false)}>Cancel</Button>
-          <Button onClick={handleSaveView} variant="contained" disabled={!newViewName}>
+          <RakutenButton onClick={() => setOpenSaveView(false)}>Cancel</RakutenButton>
+          <RakutenButton onClick={handleSaveView} variant="contained" disabled={!newViewName}>
             Save View
-          </Button>
+          </RakutenButton>
         </DialogActions>
       </Dialog>
     </Box>
